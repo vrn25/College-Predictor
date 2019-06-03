@@ -1,0 +1,109 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Fill Profile</title>
+    {% endblock %}
+    
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/fillprofile.css' %}"/>
+    {% endblock %}
+
+    {% block content %}
+
+    <div class="container-fluid heading text-center">
+        <h1>Academic and General Information</h1>
+        </div>
+        
+        <style>
+            .detailbox{
+                background-color: white;
+                width: 1500px;
+                position: absolute;
+                top: 54.7%;
+            }
+            body{
+                background-color: black;
+            }
+            .radio{
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0 0 0 0;
+    margin-right: 10px;
+    margin-left: 15px;
+    display: inline-flex;
+            }
+            .rad{
+                position: absolute;
+                left: -15px;
+            }
+
+            .btn{
+                position: relative;
+                top: 140px;
+            }
+            .detailbox p{
+                font-weight: bolder;
+                font-size: 1.4rem;
+                text-shadow: 0.7px 1px;
+                color: black;
+            }
+            .step{
+                position: absolute;
+                top: 0px;
+                left: 45%;
+            }
+            
+
+
+        </style>
+
+
+        <div class="detailbox">
+        <form method="post" action="{% url 'USER_DETAILS:userprofile' %}">
+        	{% csrf_token %}
+        <p class="step">Step I of III</p>    
+        <div class="row">
+        <div class="col-lg-6">
+        <p>JEE ADVANCED All India Rank</p>
+            {{ProfileForm.adv_air}}
+            <p><center>{{msg2}}</center></p>
+        </div>    
+        <div class="col-lg-6">
+        <p>JEE MAINS All India Rank</p>
+            {{ProfileForm.mains_air}}
+            <p><center>{{msg1}}</center></p>
+        </div>    
+        </div>
+
+        <br><br>
+       <div class="row">
+        <div class="col-lg-6">
+        <p>Student's Home State</p>
+            {{ProfileForm.state}}
+        </div>
+
+        <div class="col-lg-6">
+        <p>Student's Category</p>
+          {{ProfileForm.category}}
+        </div>
+         </div>
+
+         <br><br>
+            <div class="row">
+            <div class="col-lg-6">
+            <p>Student's Gender</p>
+            <div class="rad"> 
+            {{ProfileForm.gender}}
+            </div>
+            </div>
+            </div>
+
+
+        <input type="submit" class="btn btn-success" value="NEXT"/>
+        </form>
+        </div>
+            </body>
+    
+</html>
+{% endblock %}

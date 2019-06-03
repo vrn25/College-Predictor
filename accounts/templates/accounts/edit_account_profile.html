@@ -1,0 +1,36 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Edit Account Profile</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/editaccountprofile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container block1">
+
+<form method="post" action="{% url 'ACCOUNTS:accounts_profile_edit' %}">
+{% csrf_token %}
+
+{{accounts_edit_form_custom.as_p}}
+
+
+<input type="submit" class="btn btn-success" value="Submit">
+
+</form>
+<br>
+
+<form method="get" action="{% url 'ACCOUNTS:change_password' %}">
+<input type="submit" class="btn btn-success" value="Edit Password">
+</form>
+
+</div>
+
+
+
+{% endblock %}

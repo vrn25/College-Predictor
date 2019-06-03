@@ -1,0 +1,103 @@
+.navbar{
+    background-color: rgba(0, 0, 0);
+    height: 90px;
+    line-height: 85px;
+}
+
+.nav1{
+    font-family: Comic Sans MS;
+    font-size: 1.7rem;
+    font-weight: bolder;
+    color: ghostwhite;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+.nav1:hover{
+    text-decoration: none;
+    background-color: whitesmoke;
+    color: black;
+    transition: 0.8s all;
+    text-shadow: 1px 1px ;
+}
+.nav-item{
+    padding-left: 50px
+}
+h1{
+    font-size: 3.8rem;
+    background-color: #ce6903;
+    color: whitesmoke;
+    text-shadow: 3px 3px black;
+}
+.heading{
+   margin-top: 5.92%
+}
+
+.subject-info-box-1{
+    float: left;
+    width: 45%;
+}
+
+.subject-info-box-2{
+    float: left;
+    width: 45%;
+}
+
+
+.subject-info-box-1 select
+ {
+        height: 200px;
+        padding: 0;
+}
+
+.subject-info-box-2 select{
+        height: 200px;
+        padding: 0;
+}
+
+
+.subject-info-box-1 option {
+
+            padding: 4px 10px 4px 10px;
+}
+
+.subject-info-box-2 option{
+    padding: 4px 10px 4px 10px;
+}
+
+.subject-info-box-1 option:hover {
+            background: #EEEEEE;
+        }
+.subject-info-box-2 option:hover{
+    background: #EEEEEE;
+}
+    
+.subject-info-arrows {
+    float: left;
+    width: 10%;
+}
+    
+.subject-info-arrows input {
+        width: 70%;
+        margin-bottom: 5px;
+    }
+
+.proper{
+              height: 250px;
+              width: 90%;
+    }
+          
+.box{
+              position: absolute;
+              top:25%;
+    }
+.box2{
+              position: absolute;
+              top: 5%;
+     }
+ .btn{
+              padding: 10px 45px;
+ }
+
+ 

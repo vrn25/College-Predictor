@@ -1,0 +1,60 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+    {% block title %}
+	<title>Instructions</title>
+    {% endblock %}
+       
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/instructions.css' %}">
+    {% endblock %}
+   
+    {% block content %} 
+
+
+<style>
+
+    .box h1{
+        background-color: #ce6903;
+        position: relative;
+        top: 75px;
+    }
+    .box2{
+        position: relative;
+        top: 100px;
+    }
+    .btn{
+        position: relative;
+        top: 100px;
+    }
+</style>
+
+        <div class="container-fluid padding box">
+            <h1>Predict your Future Alma matter</h1>
+        <div class="row text-center box2">
+            <div class="col-lg-4">
+            <img src="{% static 'images/fillprofile.png' %}">
+                <h3 class="icon">Step I</h3>
+                <p class="icon1">Provide your Details</p>
+            </div>
+            <div class="col-lg-4">
+            <img src="{% static 'images/preferences.png' %}">
+                <h3 class="icon">Step II</h3>
+                <p class="icon1">Fill your Preferences</p>
+            </div>
+            <div class="col-lg-4">
+            <img src="{% static 'images/prediction.png' %}">
+                <h3 class="icon">Step III</h3>
+                <p class="icon1">Predict your College!</p>
+            </div>
+        </div>
+        </div>
+        
+        <form method="get" action="{% url 'USER_DETAILS:userprofile' %}">
+            {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Get Started"/> 
+        </form>
+        
+    </body>
+</html>
+{% endblock %}

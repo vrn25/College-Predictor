@@ -1,0 +1,26 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>Logout</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container block1">
+<h1>You have successfully Logged out!!</h1>
+</div>
+
+<div class="container block2">
+
+<h2>Click Here to go to Homepage</h2>
+<form method="get" action="{% url 'HOME:homepage' %}">
+<input type="submit" class="btn btn-danger" value="Home">
+</form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Result</title>
+    {% endblock %}
+    
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/result.css' %}"/>
+    {% endblock %}
+
+    {% block content %}
+    <br><br><br><br>
+
+<style>
+	body{
+		background-color: black;
+	}
+	h1{
+    font-size: 3.8rem;
+    background-color: #ce6903;
+    color: whitesmoke;
+    text-shadow: 3px 3px black;
+}
+.heading{
+   margin-top: -10px;
+}
+.tab{
+	color: white;
+}
+table, th, td{
+	border: 0.1px solid white;
+}
+th{
+	text-align: center;
+	font-size: 1.5rem;
+}
+th, td {
+  padding: 10px;
+}
+
+</style>
+
+<div class="container-fluid heading text-center">
+<h1>Final allotment list</h1>
+</div>
+
+
+<div class="tab container-fluid text-center">
+<center>
+<table style="width: 60%">
+	<tr>
+			<th>Username</th>
+			<th>Final allotment</th>
+	</tr>
+
+	{% for i in var %}
+<tr>
+	<td>{{i.name}}</td>
+	<td>{{i.allotted_list}}</td>
+</tr>
+<!--<p>{{i.name}} got alloted {{i.allotted_list}}</p>-->
+
+
+{% endfor %}
+</table>
+</center>
+</div>
+
+</body>
+</html>
+    {% endblock %}

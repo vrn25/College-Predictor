@@ -1,0 +1,35 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Account Profile</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/viewaccountprofile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container block1">
+
+<h2>Username:</h2>
+<h4>{{accounts_profile_form.username}}</h4>
+<br>
+<h2>Email:</h2>
+<h4>{{accounts_profile_form.email}}</h4>
+<br>
+<h2>Password:</h2>
+<h4>{{accounts_profile_form.password}}</h4>
+<br>
+<form method="get" action="{% url 'ACCOUNTS:accounts_profile_edit' %}">
+	{% csrf_token %}
+	<input type="submit" class="btn btn-success" value="Edit Profile">
+</form>
+
+</div>
+
+
+
+{% endblock %}

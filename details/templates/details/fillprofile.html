@@ -1,0 +1,39 @@
+{% extends 'base_layout.html' %}
+{% load static from staticfiles %}
+
+{% block title %}
+    <title>Fill Profile</title>
+    {% endblock %}
+    
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'fillprofile.css' %}"/>
+    {% endblock %}
+
+    {% block content %}
+
+    <div class="container-fluid heading text-center">
+        <h1>Academic and General information</h1>
+            <p>Step I of III</p>
+        </div>
+        
+        <div class="detailbox">
+        <form method="post" action="{% url 'DETAILS:profile' %}">
+        	{% csrf_token %}
+        <div class="row">
+        <div class="col-lg-6">
+        <p>JEE ADVANCED All India Rank</p>
+            {{Profileform.adv_air}}
+        </div>    
+        <div class="col-lg-6">
+        <p>JEE MAINS All India Rank</p>
+            {{Profileform.mains_air}}
+        </div>    
+        </div>
+                 
+        <input type="submit" class="btn btn-success" value="NEXT"/>
+        </form>
+        </div>
+            </body>
+    
+</html>
+{% endblock %}

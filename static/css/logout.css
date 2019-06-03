@@ -1,0 +1,62 @@
+body {
+   background-image:url(loginback.v1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center top;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    background-color: rgba(0, 0, 0);
+    height: 90px;
+    line-height: 85px;
+}
+
+.nav1{
+    font-family: Comic Sans MS;
+    font-size: 1.7rem;
+    font-weight: bolder;
+    color: ghostwhite;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+.nav1:hover{
+    text-decoration: none;
+    background-color: whitesmoke;
+    color: black;
+    transition: 0.8s all;
+    text-shadow: 1px 1px ;
+}
+.nav-item{
+    padding-left: 50px
+}
+
+.block1{
+    color: white;
+    position: absolute;
+    top: 17%;
+}
+.block2{
+    color: white;
+    position: absolute;
+    top: 30%;
+}
+.btn-danger {
+ padding: 10px 30px;
+    font-size: 1.5rem;
+    text-transform:uppercase;
+    font-family: arial;
+    position: absolute;
+    left: 3%;
+    margin-top: 15px;
+    font-weight: 700;
+    background-color: #dd0000;
+}
+
+.btn-danger:hover{
+    box-shadow: 0 8px 16px 0 rgba(56, 43, 43, 0.85), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: #ff0707;
+}

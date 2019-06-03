@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title %}
+	
+	{% endblock %}
+        
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1">
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    
+    {% block style %}
+
+    {% endblock %}
+    </head>
+    <body>
+    <div class="main">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'HOME:homepage' %}"><img src="{% static 'images/logo.v2.png' %}" width="70" height="70"><img src="{% static 'images/brand.png' %}" height="65" width="500" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navresp">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navresp">
+        <ul class="navbar-nav ml-auto">
+        <li>
+            <a class="nav1" href="{% url 'HOME:homepage' %}">Home</a>
+        </li>
+            <li>
+            <a class="nav1" href="#">Team</a>
+        </li>
+            <li>
+            <a class="nav1" href="{% url 'HELP:helpapp' %}">Help</a>
+        </li>
+            <li>
+                {% if user.is_authenticated %}
+            <!--<a class="nav1" href="{% url 'ACCOUNTS:accounts_profile_view' %}">View Profile</a>-->    
+            {% block log %}
+            <a class="nav1" href="{% url 'ACCOUNTS:logout' %}" id="log">Logout</a>
+            {% endblock %} 
+
+                {% else %}
+
+            <a class="nav1" href="{% url 'ACCOUNTS:login' %}">Login</a>
+            <a class="nav1" href="{% url 'ACCOUNTS:signup' %}">Sign Up</a>
+            {% endif %}
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav>
+        </div>
+
+        {% block content %}
+
+        {% endblock %}
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+</body>
+</html>
+
+

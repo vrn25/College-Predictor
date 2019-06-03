@@ -1,0 +1,115 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login page</title>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1">
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    </head>
+    <body>
+    
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'ACCOUNTS:login' %}"><img src="{% static 'logo.v2.png' %}" width="70" height="70"><img src="{% static 'signbrand2.png' %}" height="80"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navresp">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navresp">
+        <ul class="navbar-nav ml-auto">
+        <li>
+            <a class="nav1" href="#">Home</a>
+        </li>
+            <li>
+            <a class="nav1" href="#">Team</a>
+        </li>
+            <li>
+            <a class="nav1" href="#">Help</a>
+        </li>
+            <li>
+            <a class="nav1" href="{% url 'ACCOUNTS:login' %}">Login</a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav>
+
+
+
+
+    <div class="loginbox">
+    <img src="{% static 'admin.png' %}" class="admin">
+
+        <form method="post" action="{% url 'ACCOUNTS:login' %}">
+            
+            <input type="text" name="user" placeholder="Enter Username/Email" required autofocus>
+            {% csrf_token %}
+            
+            <h1>Login Here</h1>
+        <p>Username or Email</p>
+            {{% loginform.username %}}
+            <p>Password</p>
+            {{% loginform.password %}}
+
+            
+
+            <center><input type="submit" name="login" value="Login"></center>
+    
+            <a href="#">Forgot password?</a><br>
+            <a href="#" data-toggle="modal" data-target="#mymodal">Don't have an account?</a>
+            
+            {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}
+            
+        </form>
+    </div>    
+        
+        <div class="modal fade" id="mymodal">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                Sign Up
+                </div>
+            </div>
+            <form method="post" action="{url 'ACCOUNTS:signup'}">  
+                {% csrf_token %}
+            <div class="modal-body">
+                <p>Email</p>
+                <input type="text" name="email" placeholder="Enter Email" required autofocus>
+                <p>Username</p>
+                <input type="text" name="username" placeholder="Enter Username" required>
+                <p>Password</p>
+                <input type="password" name="pwd" placeholder="Enter Password">
+                <p>Confirm Password</p>
+                <input type="password" name="cnfpwd" placeholder="Confirm Password">
+            </div>
+                
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Create Account"/>
+                <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close"/>
+            </div>
+            </form>
+            </div>
+            </div>
+            </div>
+        
+    </body>
+</html>

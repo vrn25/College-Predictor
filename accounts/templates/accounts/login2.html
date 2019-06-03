@@ -1,0 +1,85 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/login2.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<br><br><br><br><br><br><br><br><br>
+
+
+<div class="loginbox">
+    <img src="{% static 'images/admin.png' %}" class="admin">
+
+        <form method="post" action="{% url 'ACCOUNTS:login' %}">
+            
+            
+            {% csrf_token %}
+            
+            <h1>Login Here</h1>
+        <p>Username</p>
+            {{ loginform.username }}
+            <p>Password</p>
+            {{ loginform.password }}
+            <center>{{msg}}</center>
+
+            <center><input type="submit" name="login" value="Login"></center>
+    
+            <a href="#">Forgot password?</a><br>
+            <a href="{% url 'ACCOUNTS:signup' %}">Don't have an account?</a>
+            
+            {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}
+            
+        </form>
+    </div>    
+        
+        <div class="modal fade" id="mymodal">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                Sign Up
+                </div>
+            </div>
+            <form method="post" action="{% url 'ACCOUNTS:login' %}">  
+                {% csrf_token %}
+            <div class="modal-body">
+                <p>Email</p>
+                {{signupform.email}}
+
+                <p>Username</p>
+                {{signupform.username}}
+                
+                <p>Password</p>
+                {{signupform.password1}}
+                
+                <p>Confirm Password</p>
+                {{signupform.password2}}
+            </div>
+                
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Create Account"/>
+                <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close"/>
+            </div>
+            </form>
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+	
+
+{% endblock %}

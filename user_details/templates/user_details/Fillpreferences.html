@@ -1,0 +1,1357 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Fill Preferences</title>
+    {% endblock %}
+    
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/fillpreferences.css' %}"/>
+    {% endblock %}
+
+{% block log %}
+
+  <a class="nav1" href="{% url 'ACCOUNTS:logout' %}" onclick="return false" title="Please fill preferences first">Logout</a>
+
+{% endblock %}
+    
+    {% block content %}
+
+    <div class="container-fluid heading text-center upbox">
+        <h1>Fill your preferences</h1>
+
+
+<br><br><br>
+
+<style>         
+
+body{
+  background-color: black;
+} 
+          .box2{
+              position: absolute;
+              top: 9.88%;
+              /*background-color: #ce6903;*/
+              height: 70px;
+              width: 1489px;
+              /*border: 2px solid black;
+              border-radius: 5px;*/
+          }
+          .box2 select{
+            outline: none;
+            border: none;
+            border-bottom: 2px solid black;
+            background-color: transparent;
+            width: 90%;
+            cursor: pointer;
+            position: relative;
+            top: -100px;
+            right: 30px;
+          }
+
+          .right, .left{
+               border: 2px solid;
+               padding: 10px 20px 10px 20px;
+               border-radius: 50px;
+               font-size: 1.3rem;
+               position: relative;
+               bottom: 285px;
+          }
+          .detailbox{
+    box-sizing: border-box;
+    width: 1490px;
+    height: 500px;
+    background: white;
+    color: #000;
+    position: absolute;
+    top: 56%;
+    left:50%; 
+    transform: translate(-50%,-50%);
+    padding: 50px 30px;
+}
+.proper{
+              height: 230px;
+              width: 94.5%;
+          }
+
+.box{
+              position: relative;
+              top: -23%;
+              right: 5px;
+          }
+       
+          .upbox h1{
+              margin-top: 1%;  
+          }
+          #Btn{
+             position: relative;
+             top: 120px;
+             right: 450px; 
+          }
+          #res{
+              position: relative;
+             top: 69px;
+             right: 200px;
+          }
+          .up, .down{
+               border: 2px solid;
+               padding: 10px 20px 10px 20px;
+               border-radius: 50px;
+               font-size: 1.3rem;
+          }
+          .up{
+              position: relative;
+              bottom: 260px;
+              left: 310px;
+          }
+           .down{
+              position: relative;
+              bottom: 340px;
+              left: 400px;
+          }
+          .detailbox h4{
+            font-weight: bolder;
+                font-size: 1.8rem;
+                text-shadow: 0.7px 1px;
+                color: black;
+          }
+
+          .step{
+            position: absolute;
+            top: 0px;
+            left: 45.5%;
+            font-weight: bolder;
+                font-size: 1.4rem;
+                text-shadow: 0.7px 1px;
+                color: black;
+          }
+          i {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+          .go_up{
+            transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+          }
+          .go_down{
+            transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          }
+          .go_right{
+            transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+          }
+          .go_left{
+            transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+          }
+          #clg_def,#branch_def{
+            font-weight: bolder;
+                font-size: 1rem;
+                text-shadow: 0.7px 1px;
+                color: black; 
+          }
+          #lstBox1,#lstBox2 option{
+            font-size: 1rem;
+            cursor: pointer;
+          }
+          #lstBox1 option:hover, #lstBox2 option:hover{
+            background-color: rgba(162, 162, 167, 0.8);
+          }
+          #lstBox1,#lstBox2{
+            border: 1.5px solid grey;
+            border-radius: 5px;
+          }
+         .bottom{
+          padding: 10px 60px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 0.5px 1px;
+         }
+         .bottom:hover{
+          box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: #1dba41;
+         }
+
+.modal-body p{
+    font-size: 1.2rem;
+    font-weight: bold;
+     margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.md{
+  position: absolute;
+  top: -30%;
+}
+.btn-danger{
+  font-size: 1rem;
+  padding: 10px 15px-;
+}
+
+      </style>
+<div class="detailbox">
+  <p class="step">Step II of III</p>
+<div class="container-fluid heading text-center box2">
+    <div class="row">
+        <div class="col-lg-6">
+
+        <select class="common" id="college_name" onchange="update1()"> 
+        <option value="10000" id="clg_def">Select your College</option>
+        <option value="0">Indian Institute of Technology Bombay</option>
+        <option value="1">Indian Institute of Technology Delhi</option>        
+        <option value="2">National Institute of Technology Surathkal</option>
+        <option value="3">National Institute of Technology Trichy</option>
+        <option value="4">Indian Institute of Information Technology Allahabad</option>
+        <option value="5">Indian Institute of Information Technology Delhi</option>        
+    </select>        
+            
+        </div>
+        <div class="col-lg-6">
+    
+        <select class="common" id="branch_name" onchange="update2()">
+        <option value="100001" id="branch_def">Select Academic Program</option>
+        <option value="0">Aerospace Engineering</option>
+        <option value="1">Chemical Engineering</option>
+        <option value="2">Civil Engineering</option>
+        <option value="3">Computer Science and Engineering</option>        
+        <option value="4">Electrical Engineering</option>
+    <option value="5">Electronics and Communication</option>
+        <option value="6">Information Technology</option>
+        <option value="7">Mechanical Engineering</option>
+    </select>
+            
+    </div>
+        
+    </div>
+    
+      </div>
+            
+    <br><br><br>  
+      
+      <div class="container-fluid heading text-center box">
+          
+          <div class="row">
+              <div class="col-lg-6">
+                <h4>Available Choices</h4>
+    <select multiple="multiple" id="lstBox1" class="proper">
+        <option disabled selected="selected"><b>College Choices</b></option>
+        <option>Indian Institute of Technology Bombay, Aerospace Engineering</option>
+        <option>Indian Institute of Technology Bombay, Chemical Engineering</option>
+        <option>Indian Institute of Technology Bombay, Civil Engineering</option>
+        <option>Indian Institute of Technology Bombay, Computer Science and Engineering</option>
+        <option>Indian Institute of Technology Bombay, Electrical Engineering</option>
+        <option>Indian Institute of Technology Bombay, Electronics and Communication</option>
+        <option>Indian Institute of Technology Bombay, Mechanical Engineering</option>
+        
+        <option>Indian Institute of Technology Delhi, Aerospace Engineering</option>
+        <option>Indian Institute of Technology Delhi, Chemical Engineering</option>
+        <option>Indian Institute of Technology Delhi, Civil Engineering</option>
+        <option>Indian Institute of Technology Delhi, Computer Science and Engineering</option>
+        <option>Indian Institute of Technology Delhi, Electrical Engineering</option>
+        <option>Indian Institute of Technology Delhi, Electronics and Communication</option>
+        <option>Indian Institute of Technology Delhi, Mechanical Engineering</option>
+        
+        <option>National Institute of Technology Surathkal, Chemical Engineering</option>
+        <option>National Institute of Technology Surathkal, Civil Engineering</option>
+        <option>National Institute of Technology Surathkal, Computer Science and Engineering</option>
+        <option>National Institute of Technology Surathkal, Electrical Engineering</option>
+        <option>National Institute of Technology Surathkal, Electronics and Communication</option>
+        <option>National Institute of Technology Surathkal, Information Technology</option>
+        <option>National Institute of Technology Surathkal, Mechanical Engineering</option>
+        
+        <option>National Institute of Technology Trichy, Aerospace Engineering</option>
+        <option>National Institute of Technology Trichy, Chemical Engineering</option>
+        <option>National Institute of Technology Trichy, Civil Engineering</option>
+        <option>National Institute of Technology Trichy, Computer Science and Engineering</option>
+        <option>National Institute of Technology Trichy, Electrical Engineering</option>
+        <option>National Institute of Technology Trichy, Electronics and Communication</option>
+        <option>National Institute of Technology Trichy, Information Technology</option>
+        <option>National Institute of Technology Trichy, Mechanical Engineering</option>
+        
+        <option>Indian Institute of Information Technology Allahabad, Computer Science and Engineering</option>
+        <option>Indian Institute of Information Technology Allahabad, Electrical Engineering</option>
+        <option>Indian Institute of Information Technology Allahabad, Electronics and Communication</option>
+        <option>Indian Institute of Information Technology Allahabad, Information Technology</option>
+        
+        <option>Indian Institute of Information Technology Delhi, Computer Science and Engineering</option>
+        <option>Indian Institute of Information Technology Delhi, Electrical Engineering</option>
+        <option>Indian Institute of Information Technology Delhi, Electronics and Communication</option>
+        <option>Indian Institute of Information Technology Delhi, Information Technology</option>
+        
+</select>  
+                  <!--<script>
+                    function change(){
+                        document.getElementById("hi").style.background-color="rgba(162, 162, 167, 0.9)"
+                    }
+                  </script>-->
+
+
+              </div>
+              <div class="col-lg-6">
+                <h4>Selected Choices</h4>
+                
+                <!-- <form action="{% url 'USER_DETAILS:userpreferences' %}" method="post">
+                        {% csrf_token %}              
+              <select multiple="multiple" id="lstBox2" class="proper">
+                  </select>
+
+                  <input type="submit" value="Submit" class="btn btn-success">
+              </form> -->
+              <div id="final_list">
+            <select multiple="multiple" id="lstBox2" class="proper"></select>
+              </div>
+<!--<form action="{% url 'USER_DETAILS:results' %}" method="get">-->
+<input type="submit" class="btn btn-success bottom" id="Btn" value="Submit" onclick="enable_result()">
+
+<form method="get" action="{% url 'USER_DETAILS:results' %}">
+<input type="submit" class="btn btn-success bottom" id="res" value="Get Result" disabled title="Please Submit first">
+</form>
+
+<!--<button data-toggle="modal" data-target="#mymodal" type="button">click</button>-->
+
+              <!--<form action="{% url 'USER_DETAILS:userpreferences' %}" method="post">
+                {% csrf_token %}
+                {{PreferForm.college_selected}}
+                <input type="submit" class="btn btn-danger" value="Submit">
+                </form>-->
+            </div>
+      </div>
+      
+      <div class="md">
+  <div class="modal fade" id="mymodal">
+            <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                
+            <div class="modal-body">
+              <p>You have successfully<br>submitted your choices!<p>
+            </div>
+            <div class="modal-footer">
+            <form>
+                <input type="button" class="btn btn-danger close" data-dismiss="modal" value="Close">
+                 </form>
+               </div>
+            </div>
+            </div>
+            </div>
+              </div>
+      <div class="text-center">
+
+  <button type="button" id="btnRight" class="btn btn-primary right"><i class="go_right"></i></button>
+  <br><br>
+    <button type="button" id="btnLeft" class="btn btn-primary left"><i class="go_left"></i></button>
+    <br><br>
+          <button type="button" id="up2" class="btn btn-primary up"><i class="go_up"></i></button>   
+  <br><br>
+  <button type="button" id="down2" class="btn btn-primary down"><i class="go_down"></i></button>
+          
+</div>
+          
+      </div>
+</div>
+</div>
+<script type="text/javascript">
+  function enable_result(){
+    alert("You have successfully submitted your choices!")
+    document.getElementById("res").disabled = false;
+    document.getElementById("res").title="Click to go to results";
+    document.getElementById("Btn").disabled=true;
+  }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        
+        $("#Btn").click(function() {
+            var element=document.getElementById("lstBox2");
+        var html = element.innerHTML;
+        var list = { html: html };
+    var url = JSON.stringify(list);
+    console.log(url);
+    console.log(typeof url);
+            
+            $.ajax({
+                url: "/Details/Fill-Preferences/inter/",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    url: url,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                
+            });
+        });
+    });
+</script>
+
+
+<!--<script>
+    function Submit(){
+        /*var element=document.getElementById("lstBox2");
+    
+          var html = element.innerHTML;       
+//  This gives you a JSON object that you can send with jQuery.ajax's `data`
+// option, you can rename the property to whatever you want.
+var data = { html: html }; 
+
+//  This gives you a string in JSON syntax of the object above that you can 
+// send with XMLHttpRequest.
+const json1 = JSON.stringify(data);
+console.log(json1);*/
+
+}
+const toSend={
+    name:'videh',age:18
+};
+const jsonString=JSON.stringify(toSend);
+var xhr = new XMLHttpRequest();
+var url = "http://127.0.0.1:8000/Details/result";
+xhr.open("POST", url);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        var json = JSON.parse(xhr.responseText);
+        console.log(json.email + ", " + json.password);
+    }
+xhr.send(jsonString);
+
+
+
+</script>-->
+
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(#Btn).click(function(){
+            var jsonData={ Fname:name, Address:address };
+            $.ajax({
+                
+            url: 'http://127.0.0.1:8000/Details/result/',
+            type: 'POST',
+            contentType:'application/json',
+            dataType:'json',
+            data: {
+                senddata:JSON.stringify(jsonData)
+            },
+            success: function (data) {
+         //this gets called when server returns an OK response
+            alert("it worked!");
+            },
+        error: function (data) {
+             alert("it didnt work");
+            }
+            });
+        });
+    });
+    console.log("hello");
+</script>-->
+
+<!-- <script>
+    function Submit(){
+        var element=document.getElementById("lstBox2");
+          console.log(element);
+          var html = element.innerHTML;       
+//  This gives you a JSON object that you can send with jQuery.ajax's `data`
+// option, you can rename the property to whatever you want.
+var data = { html: html }; 
+
+//  This gives you a string in JSON syntax of the object above that you can 
+// send with XMLHttpRequest.
+var json1 = JSON.stringify(data);
+    console.log(json1);
+    console.log(typeof json1);
+    }
+</script> --> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js">
+        </script>
+<script src="{% static 'js/jquery.js' %}"></script>
+
+<script>
+$().ready(function() {
+  
+let $lstBox1 = $('#lstBox1');
+  let $lstBox2 = $('#lstBox2');
+
+  $('#up2').click(function () {
+    let $selected = $lstBox2.find('option:selected');
+    $selected.insertBefore($selected.prev());
+  });
+  
+  $('#down2').click(function () {
+    let $selected = $lstBox2.find('option:selected');
+    $selected.insertAfter($selected.next());
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+  var opt=new Array(6);
+var branchp=9;
+
+for (var i = 0; i < opt.length; i++) {
+  opt[i] = new Array(branchp);
+}
+
+    opt[0][0]="Indian Institute of Technology Bombay";
+    opt[1][0]="Indian Institute of Technology Delhi";
+    opt[2][0]="National Institute of Technology Surathkal";
+    opt[3][0]="National Institute of Technology Trichy";
+    opt[4][0]="Indian Institute of Information Technology Allahabad";
+    opt[5][0]="Indian Institute of Information Technology Delhi";
+
+for(var i=0;i<6;i++){
+    opt[i][1]="Aerospace Engineering";
+    opt[i][2]="Chemical Engineering";
+    opt[i][3]="Civil Engineering";
+    opt[i][4]="Computer Science and Engineering";
+    opt[i][5]="Electrical Engineering";
+    opt[i][6]="Electronics and Communication";
+    opt[i][7]="Information Technology";
+    opt[i][8]="Mechanical Engineering";
+}
+var html1_before=(document.getElementById("lstBox1")).innerHTML;
+
+
+function update1()
+        {
+            var collegename=document.getElementById("college_name");
+            var choices=document.getElementById("lstBox1");
+            var selected=collegename.value;
+            var html='<option disabled selected="selected">College Choices</option>';
+            var b=(document.getElementById("branch_name")).value
+            if(selected==="10000"){
+                
+                if(b==="100001"){
+                
+                    choices.innerHTML=html1_before;
+                    console.log(html1_before);
+                }
+                else{
+                    
+                    var aero=[];
+    for(var i=0;i<opt.length;i++){
+        if(i===0||i===1){
+            aero.push( opt[i][0] + ', ' + opt[i][1] );
+        }
+    }
+    var chem=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==4 && i!==5){
+            chem.push( opt[i][0] + ', ' + opt[i][2] );
+        }
+    }
+    var civ=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==4 && i!==5){
+            civ.push( opt[i][0] + ', ' + opt[i][3] );
+        }
+    }
+    var comp=[];
+    for(var i=0;i<opt.length;i++){
+        
+            comp.push( opt[i][0] + ', ' + opt[i][4] );
+        
+    }
+    var ee=[];
+    for(var i=0;i<opt.length;i++){
+        
+            ee.push( opt[i][0] + ', ' + opt[i][5] );
+        
+    }
+    var ec=[];
+    for(var i=0;i<opt.length;i++){
+        
+            ec.push( opt[i][0] + ', ' + opt[i][6] );
+        
+    }
+    var it=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==0 && i!==1){
+            it.push( opt[i][0] + ', ' + opt[i][7] );
+        }
+    }
+    var me=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==4 && i!==5){
+            me.push( opt[i][0] + ', ' + opt[i][8] );
+        }
+    }
+                    
+                if(b==="0"){    
+                        for(var i=0; i < aero.length; i++)
+                {
+                    html+='<option>' + aero[i] + '</option>';
+                }
+                    }
+                    else if(b==="1"){
+                 for(var i=0; i < chem.length; i++)
+                {
+                    html+='<option>' + chem[i] + '</option>';
+                }       
+                    }
+                    else if(b==="2"){
+                 for(var i=0; i < civ.length; i++)
+                {
+                    html+='<option>' + civ[i] + '</option>';
+                }       
+                    }
+                    else if(b==="3"){
+                 for(var i=0; i < comp.length; i++)
+                {
+                    html+='<option>' + comp[i] + '</option>';
+                }       
+                    }
+                    else if(b==="4"){
+                 for(var i=0; i < ee.length; i++)
+                {
+                    html+='<option>' + ee[i] + '</option>';
+                }       
+                    }
+                    else if(b==="5"){
+                 for(var i=0; i < ec.length; i++)
+                {
+                    html+='<option>' + ec[i] + '</option>';
+                }       
+                    }
+                    else if(b==="6"){
+                 for(var i=0; i < it.length; i++)
+                {
+                    html+='<option>' + it[i] + '</option>';
+                }       
+                    }
+                    else if(b==="7"){
+                 for(var i=0; i < me.length; i++)
+                {
+                    html+='<option>' + me[i] + '</option>';
+                }       
+                    }
+                choices.innerHTML=html;
+                }
+            }
+
+            
+    else{
+            if((document.getElementById("branch_name")).value==="100001"){
+            var iitb=[];
+                
+                for (var j=1; j<branchp ; j++){ 
+                    if(j!==7){    
+                    iitb.push( opt[0][0]+', '+opt[0][j] );   
+                    }
+            }
+            
+            var iitd=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j!==7){    
+                    iitd.push( opt[1][0]+', '+opt[1][j] );   
+                    }
+            }
+            
+            var nitk=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j!==1){    
+                    nitk.push( opt[2][0]+', '+opt[2][j] );   
+                    }
+            }
+            
+            var nitt=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j!==1){    
+                    nitt.push( opt[3][0]+', '+opt[3][j] );   
+                    }
+            }
+            
+            var iiita=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j===4 || j===5 || j===6 || j===7){    
+                    iiita.push( opt[4][0]+', '+opt[4][j] );   
+                    }
+            }
+            
+            var iiitd=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j===4 || j===5 || j===6 || j===7){    
+                    iiitd.push( opt[5][0]+', '+opt[5][j] );   
+                    }
+            }
+            
+            if(selected === "0")
+            {
+                for(var i=0; i < iitb.length; i++)
+                {
+                    html+='<option>' + iitb[i] + '</option>';
+                }
+            }
+            else if(selected === "1")
+            {
+                for(var i=0; i < iitd.length; i++)
+                {
+                    html+='<option>' + iitd[i] + '</option>';
+                }
+            }
+            else if(selected === "2")
+            {
+                for(var i=0; i < nitk.length; i++)
+                {
+                    html+='<option>' + nitk[i] + '</option>';
+                }
+            }
+            else if(selected === "3")
+            {
+                for(var i=0; i < nitt.length; i++)
+                {
+                    html+='<option>' + nitt[i] + '</option>';
+                }
+            }
+            else if(selected === "4")
+            {
+                for(var i=0; i < iiita.length; i++)
+                {
+                    html+='<option>' + iiita[i] + '</option>';
+                }
+            }
+            else if(selected === "5")
+            {
+                for(var i=0; i < iiitd.length; i++)
+                {
+                    html+='<option>' + iiitd[i] + '</option>';
+                }
+            }
+            
+            choices.innerHTML=html;
+        }
+            else{
+                var z=(document.getElementById("branch_name")).value;        
+            
+                if(z==="0"){
+                    
+                    var iitb=[];
+            iitb.push( opt[0][z] + ', ' + opt[0][1] );
+            
+            var iitd=[];
+            iitd.push( opt[1][z] + ', ' + opt[1][1] );
+                    
+                    if(selected==="0"){
+                for(var i=0; i < iitb.length; i++)
+                    {
+                        html+='<option>' + iitb[i] + '</option>';
+                    }    
+                    }
+                    else if(selected==="1"){
+                     for(var i=0; i < iitd.length; i++)
+                    {
+                        html+='<option>' + iitd[i] + '</option>';
+                    }   
+                    }
+                }
+                else if(z==="1" || z==="2" || z==="7"){
+                    
+                    var iitb=[];
+            iitb.push( opt[0][0] + ', ' + opt[0][Number(z)+1]);
+            
+            var iitd=[];
+            iitd.push( opt[1][0] + ', ' + opt[1][Number(z)+1] );
+                    
+                    var nitk=[];
+            nitk.push( opt[2][0] + ', ' + opt[2][Number(z)+1] );
+            
+            var nitt=[];
+            nitt.push( opt[3][0] + ', ' + opt[3][Number(z)+1] );
+                    
+                    if(selected==="0"){
+                        for(var i=0; i < iitb.length; i++)
+                    {
+                        html+='<option>' + iitb[i] + '</option>';
+                    }
+                    }
+                    else if(selected==="1"){
+                        for(var i=0; i < iitd.length; i++)
+                    {
+                        html+='<option>' + iitd[i] + '</option>';
+                    }
+                    }
+                    else if(selected==="2"){
+                        for(var i=0; i < nitk.length; i++)
+                    {
+                        html+='<option>' + nitk[i] + '</option>';
+                    }
+                    }
+                    else if(selected==="3"){
+                        for(var i=0; i < nitt.length; i++)
+                    {
+                        html+='<option>' + nitt[i] + '</option>';
+                    }
+                    }
+                }
+                else if(z==="3" || z==="4" || z==="5"){
+                    
+                    var iitb=[];
+            iitb.push( opt[0][0] + ', ' + opt[0][Number(z)+1]);
+            
+            var iitd=[];
+            iitd.push( opt[1][0] + ', ' + opt[1][Number(z)+1] );
+                    
+                    var nitk=[];
+            nitk.push( opt[2][0] + ', ' + opt[2][Number(z)+1] );
+                    
+                    var nitt=[];
+            nitt.push( opt[3][0] + ', ' + opt[3][Number(z)+1] );
+                    
+                   var iiita=[];
+            iiita.push( opt[4][0] + ', ' + opt[4][Number(z)+1] );
+                   
+                    var iiitd=[];
+            iiitd.push( opt[5][0] + ', ' + opt[5][Number(z)+1] );
+                       
+                    if(selected==="0"){
+                     for(var i=0; i < iitb.length; i++)
+                    {
+                        html+='<option>' + iitb[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="1"){
+                     for(var i=0; i < iitd.length; i++)
+                    {
+                        html+='<option>' + iitd[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="2"){
+                     for(var i=0; i < nitk.length; i++)
+                    {
+                        html+='<option>' + nitk[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="3"){
+                     for(var i=0; i < nitt.length; i++)
+                    {
+                        html+='<option>' + nitt[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="4"){
+                     for(var i=0; i < iiita.length; i++)
+                    {
+                        html+='<option>' + iiita[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="5"){
+                     for(var i=0; i < iiitd.length; i++)
+                    {
+                        html+='<option>' + iiitd[i] + '</option>';
+                    }   
+                    }
+                    
+                }
+                else if(z==="6"){
+                    
+                    var nitk=[];
+            nitk.push( opt[2][0] + ', ' + opt[2][Number(z)+1] );
+                    
+                    var nitt=[];
+            nitt.push( opt[3][0] + ', ' + opt[3][Number(z)+1] );
+                    
+                   var iiita=[];
+            iiita.push( opt[4][0] + ', ' + opt[4][Number(z)+1] );
+                   
+                    var iiitd=[];
+            iiitd.push( opt[5][0] + ', ' + opt[5][Number(z)+1] );
+                    
+                    if(selected==="2"){
+                     for(var i=0; i < nitk.length; i++)
+                    {
+                        html+='<option>' + nitk[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="3"){
+                     for(var i=0; i < nitt.length; i++)
+                    {
+                        html+='<option>' + nitt[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="4"){
+                     for(var i=0; i < iiita.length; i++)
+                    {
+                        html+='<option>' + iiita[i] + '</option>';
+                    }   
+                    }
+                    else if(selected==="5"){
+                     for(var i=0; i < iiitd.length; i++)
+                    {
+                        html+='<option>' + iiitd[i] + '</option>';
+                    }   
+                    }
+                }
+                choices.innerHTML=html;
+            }
+        }
+        }
+
+function update2(){
+    
+            var branchname=document.getElementById("branch_name");
+            var choices=document.getElementById("lstBox1");
+            var selected=branchname.value;
+            var html='<option disabled selected="selected">College Choices</option>';
+            var c=(document.getElementById("college_name")).value
+    
+    if(selected==="100001"){
+        
+        if(c==="10000"){
+        
+            choices.innerHTML=html1_before;
+        }
+         else{
+                
+             var iitb=[];
+                
+                for (var j=1; j<branchp ; j++){ 
+                    if(j!==7){    
+                    iitb.push( opt[0][0]+', '+opt[0][j] );   
+                    }
+            }
+            
+            var iitd=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j!==7){    
+                    iitd.push( opt[1][0]+', '+opt[1][j] );   
+                    }
+            }
+            
+            var nitk=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j!==1){    
+                    nitk.push( opt[2][0]+', '+opt[2][j] );   
+                    }
+            }
+            
+            var nitt=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j!==1){    
+                    nitt.push( opt[3][0]+', '+opt[3][j] );   
+                    }
+            }
+            
+            var iiita=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j===4 || j===5 || j===6 || j===7){    
+                    iiita.push( opt[4][0]+', '+opt[4][j] );   
+                    }
+            }
+            
+            var iiitd=[];
+                
+                for (var j=1; j<branchp; j++){
+                    
+                    if(j===4 || j===5 || j===6 || j===7){    
+                    iiitd.push( opt[5][0]+', '+opt[5][j] );   
+                    }
+            }
+             if(c==="0"){
+                 for(var i=0; i < iitb.length; i++)
+                {
+                    html+='<option>' + iitb[i] + '</option>';
+                }
+             }
+             else if(c==="1"){
+                 for(var i=0; i < iitd.length; i++)
+                {
+                    html+='<option>' + iitd[i] + '</option>';
+                }
+             }
+             else if(c==="2"){
+                 for(var i=0; i < nitk.length; i++)
+                {
+                    html+='<option>' + nitk[i] + '</option>';
+                }
+             }
+             else if(c==="3"){
+                 for(var i=0; i < nitt.length; i++)
+                {
+                    html+='<option>' + nitt[i] + '</option>';
+                }
+             }
+             else if(c==="4"){
+                 for(var i=0; i < iiita.length; i++)
+                {
+                    html+='<option>' + iiita[i] + '</option>';
+                }
+             }
+             else if(c==="5"){
+                 for(var i=0; i < iiitd.length; i++)
+                {
+                    html+='<option>' + iiitd[i] + '</option>';
+                }
+             }
+             choices.innerHTML=html;
+            }
+    }
+    else{
+    
+    if((document.getElementById("college_name")).value==="10000"){
+    
+        var aero=[];
+    for(var i=0;i<opt.length;i++){
+        if(i===0||i===1){
+            aero.push( opt[i][0] + ', ' + opt[i][1] );
+        }
+    }
+    var chem=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==4 && i!==5){
+            chem.push( opt[i][0] + ', ' + opt[i][2] );
+        }
+    }
+    var civ=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==4 && i!==5){
+            civ.push( opt[i][0] + ', ' + opt[i][3] );
+        }
+    }
+    var comp=[];
+    for(var i=0;i<opt.length;i++){
+        
+            comp.push( opt[i][0] + ', ' + opt[i][4] );
+        
+    }
+    var ee=[];
+    for(var i=0;i<opt.length;i++){
+        
+            ee.push( opt[i][0] + ', ' + opt[i][5] );
+        
+    }
+    var ec=[];
+    for(var i=0;i<opt.length;i++){
+        
+            ec.push( opt[i][0] + ', ' + opt[i][6] );
+        
+    }
+    var it=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==0 && i!==1){
+            it.push( opt[i][0] + ', ' + opt[i][7] );
+        }
+    }
+    var me=[];
+    for(var i=0;i<opt.length;i++){
+        if(i!==4 && i!==5){
+            me.push( opt[i][0] + ', ' + opt[i][8] );
+        }
+    }
+            
+        if(selected === "0")
+            {
+                for(var i=0; i < aero.length; i++)
+                {
+                    html+='<option>' + aero[i] + '</option>';
+                }
+            }
+        if(selected === "1")
+            {
+                for(var i=0; i < chem.length; i++)
+                {
+                    html+='<option>' + chem[i] + '</option>';
+                }
+            }
+    if(selected === "2")
+            {
+                for(var i=0; i < civ.length; i++)
+                {
+                    html+='<option>' + civ[i] + '</option>';
+                }
+            }
+    if(selected === "3")
+            {
+                for(var i=0; i < comp.length; i++)
+                {
+                    html+='<option>' + comp[i] + '</option>';
+                }
+            }
+    if(selected === "4")
+            {
+                for(var i=0; i < ee.length; i++)
+                {
+                    html+='<option>' + ee[i] + '</option>';
+                }
+            }
+    if(selected === "5")
+            {
+                for(var i=0; i < ec.length; i++)
+                {
+                    html+='<option>' + ec[i] + '</option>';
+                }
+            }
+    if(selected === "6")
+            {
+                for(var i=0; i < it.length; i++)
+                {
+                    html+='<option>' + it[i] + '</option>';
+                }
+            }
+    if(selected === "7")
+            {
+                for(var i=0; i < me.length; i++)
+                {
+                    html+='<option>' + me[i] + '</option>';
+                }
+            }
+    
+    choices.innerHTML=html;
+        
+    }
+    
+    else{
+    
+        var y=(document.getElementById("college_name")).value
+        
+    if(y==="0" || y==="1"){
+            
+        
+        if(selected==="6"){
+            
+        }
+        else{
+                var aero=[];                    
+        aero.push( opt[y][0] + ', ' + opt[y][1] );
+        
+            var chem=[];                    
+        chem.push( opt[y][0] + ', ' + opt[y][2] );
+            
+            var civ=[];                    
+        civ.push( opt[y][0] + ', ' + opt[y][3] );
+            
+            var comp=[];                    
+        comp.push( opt[y][0] + ', ' + opt[y][4] );
+            
+            var ee=[];                    
+        ee.push( opt[y][0] + ', ' + opt[y][5] );
+            
+            var ec=[];                    
+        ec.push( opt[y][0] + ', ' + opt[y][6] );
+            
+            var me=[];                    
+        me.push( opt[y][0] + ', ' + opt[y][8] );
+            
+            if(selected === "0")
+            {
+                for(var i=0; i < aero.length; i++)
+                {
+                    html+='<option>' + aero[i] + '</option>';
+                }
+            }
+            if(selected === "1")
+            {
+                for(var i=0; i < chem.length; i++)
+                {
+                    html+='<option>' + chem[i] + '</option>';
+                }
+            }
+            if(selected === "2")
+            {
+                for(var i=0; i < civ.length; i++)
+                {
+                    html+='<option>' + civ[i] + '</option>';
+                }
+            }
+            if(selected === "3")
+            {
+                for(var i=0; i < comp.length; i++)
+                {
+                    html+='<option>' + comp[i] + '</option>';
+                }
+            }
+            if(selected === "4")
+            {
+                for(var i=0; i < ee.length; i++)
+                {
+                    html+='<option>' + ee[i] + '</option>';
+                }
+            }
+            if(selected === "5")
+            {
+                for(var i=0; i < ec.length; i++)
+                {
+                    html+='<option>' + ec[i] + '</option>';
+                }
+            }
+            if(selected === "7")
+            {
+                for(var i=0; i < me.length; i++)
+                {
+                    html+='<option>' + me[i] + '</option>';
+                }
+            }
+            
+        }
+        choices.innerHTML=html;
+    }
+        
+        else if(y==="2" || y==="3"){
+        
+        
+        if(selected==="0"){
+            
+        }
+        else{        
+            var chem=[];                    
+        chem.push( opt[y][0] + ', ' + opt[y][2] );
+            
+            var civ=[];                    
+        civ.push( opt[y][0] + ', ' + opt[y][3] );
+            
+            var comp=[];                    
+        comp.push( opt[y][0] + ', ' + opt[y][4] );
+            
+            var ee=[];                    
+        ee.push( opt[y][0] + ', ' + opt[y][5] );
+            
+            var ec=[];                    
+        ec.push( opt[y][0] + ', ' + opt[y][6] );
+            
+            var it=[];                    
+        it.push( opt[y][0] + ', ' + opt[y][7] );
+            
+            var me=[];                    
+        me.push( opt[y][0] + ', ' + opt[y][8] );
+            
+            if(selected === "1")
+            {
+                for(var i=0; i < chem.length; i++)
+                {
+                    html+='<option>' + chem[i] + '</option>';
+                }
+            }
+            if(selected === "2")
+            {
+                for(var i=0; i < civ.length; i++)
+                {
+                    html+='<option>' + civ[i] + '</option>';
+                }
+            }
+            if(selected === "3")
+            {
+                for(var i=0; i < comp.length; i++)
+                {
+                    html+='<option>' + comp[i] + '</option>';
+                }
+            }
+            if(selected === "4")
+            {
+                for(var i=0; i < ee.length; i++)
+                {
+                    html+='<option>' + ee[i] + '</option>';
+                }
+            }
+            if(selected === "5")
+            {
+                for(var i=0; i < ec.length; i++)
+                {
+                    html+='<option>' + ec[i] + '</option>';
+                }
+            }
+            if(selected === "6")
+            {
+                for(var i=0; i < it.length; i++)
+                {
+                    html+='<option>' + it[i] + '</option>';
+                }
+            }
+            if(selected === "7")
+            {
+                for(var i=0; i < me.length; i++)
+                {
+                    html+='<option>' + me[i] + '</option>';
+                }
+            }
+            
+        }
+        choices.innerHTML=html;
+        }
+        
+        else if(y==="4" || y==="5"){
+        
+        if(selected==="0" || selected==="1" || selected==="2" || selected==="8"){
+            
+        }
+        else{        
+            var comp=[];                    
+        comp.push( opt[y][0] + ', ' + opt[y][4] );
+            
+            var ee=[];                    
+        ee.push( opt[y][0] + ', ' + opt[y][5] );
+            
+            var ec=[];                    
+        ec.push( opt[y][0] + ', ' + opt[y][6] );
+            
+            var it=[];                    
+        it.push( opt[y][0] + ', ' + opt[y][7] );
+                        
+            if(selected === "3")
+            {
+                for(var i=0; i < comp.length; i++)
+                {
+                    html+='<option>' + comp[i] + '</option>';
+                }
+            }
+            if(selected === "4")
+            {
+                for(var i=0; i < ee.length; i++)
+                {
+                    html+='<option>' + ee[i] + '</option>';
+                }
+            }
+            if(selected === "5")
+            {
+                for(var i=0; i < ec.length; i++)
+                {
+                    html+='<option>' + ec[i] + '</option>';
+                }
+            }
+            if(selected === "6")
+            {
+                for(var i=0; i < it.length; i++)
+                {
+                    html+='<option>' + it[i] + '</option>';
+                }
+            }
+        }
+        choices.innerHTML=html;
+        }
+}
+}
+}
+</script>
+
+
+
+        </body>
+</html>
+
+
+     {% endblock %}
